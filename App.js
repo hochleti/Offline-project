@@ -1,10 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Animated, Component, TextInput } from 'react-native';
+import * as React from 'react';
+import { useState } from "react";
+import { StyleSheet, Text, View, Animated, Component, Button, TextInput } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import CountDown from 'react-native-countdown-component';
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, postsRef } from "firebase/database";
+import Firebase from "./js/firebase";
+
 
 
 
@@ -19,24 +19,22 @@ const firebaseConfig = {
   measurementId: "G-7YXYN7DE4Q"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-const database = getDatabase(app);
-
 function writeUserData(username, timeSpent) {
-  set(ref(database, 'users/' + username), {
-    time: timeSpent
-  });
-  alert('Finished')
-}
+    if (username != "") {
+      Firebase.database().ref('users/' + username).set({
+        time: timeSpent
+      });
+      alert('Finished')
+    }
+  }
 
-export default function App() {
+function App() {
   const [date, setDate] = useState(new Date(0, 0));
   const [show, setShow] = useState(false);
   const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0);
   const [shouldShow, setShouldShow] = useState(false);
+  const [user, setUser] = useState("");
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -44,35 +42,55 @@ export default function App() {
     setHour(currentDate.getHours());
     setMinute(currentDate.getMinutes());
   };
-
-
   
+
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
-      <View >
-      {shouldShow ? (
-      <CountDown
-        size={30}
-        until={date.getHours()*3600 + date.getMinutes()*60}
-        onFinish={() => writeUserData("test",1)}
-        digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#1CC625'}}
-        digitTxtStyle={{color: '#1CC625'}}
-        timeLabelStyle={{color: 'red', fontWeight: 'bold'}}
-        separatorStyle={{color: '#1CC625'}}
-        timeToShow={['H', 'M', 'S']}
-        timeLabels={{h: 'Hours', m: 'Minutes', s: 'Seconds'}}
-        showSeparator
+      <Text>Name</Text>
+      <TextInput
+        inputStyle={{
+          fontSize: 14,
+        }}
+        padding={10}
+        borderWidth= {1}
+        borderRadius = {5}
+        borderColor="grey"
+        marginLeft="auto"
+        marginRight="auto"
+        marginBottom={10}
+        width={300}
+        placeholder="Enter your name"
+        autoCapitalize="none"
+        keyboardType="default"
+        value={user}
+        borderColor="grey"
+        onChangeText={(text) => setUser(text)}
       />
-      ) : null}
+
+      <View >
+        {shouldShow ? (
+          <CountDown
+            size={30}
+            until={date.getHours() * 3600 + date.getMinutes() * 60}
+            onFinish={() => writeUserData(user, date.getMinutes() + date.getHours()*60)}
+            digitStyle={{ backgroundColor: '#FFF', borderWidth: 2, borderColor: '#1CC625' }}
+            digitTxtStyle={{ color: '#1CC625' }}
+            timeLabelStyle={{ color: 'red', fontWeight: 'bold' }}
+            separatorStyle={{ color: '#1CC625' }}
+            timeToShow={['H', 'M', 'S']}
+            timeLabels={{ h: 'Hours', m: 'Minutes', s: 'Seconds' }}
+            showSeparator
+          />
+        ) : null}
       </View>
       <View>
-      
-      <DateTimePicker
-        value={date}
-        mode={"countdown"}
-        is24Hour={true}
-        onChange={onChange}
-      />
+
+        <DateTimePicker
+          value={date}
+          mode={"countdown"}
+          is24Hour={true}
+          onChange={onChange}
+        />
       </View>
       <View>
         <Button title="Start/Stop" onPress={() => setShouldShow(!shouldShow)} />
@@ -80,5 +98,5 @@ export default function App() {
     </View>
   );
 }
-
+export default App;
 
