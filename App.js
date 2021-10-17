@@ -4,8 +4,7 @@ import { StyleSheet, Text, View, Animated, Component, Button, TextInput } from '
 import DateTimePicker from '@react-native-community/datetimepicker';
 import CountDown from 'react-native-countdown-component';
 import Firebase from "./js/firebase";
-
-
+import { NativeRouter, Route, Link } from "react-router-native";
 
 
 const firebaseConfig = {
@@ -28,7 +27,7 @@ function writeUserData(username, timeSpent) {
     }
   }
 
-function App() {
+function Home() {
   const [date, setDate] = useState(new Date(0, 0));
   const [show, setShow] = useState(false);
   const [hour, setHour] = useState(0);
@@ -98,5 +97,14 @@ function App() {
     </View>
   );
 }
+
+function App() {
+  return (
+    <NativeRouter>
+      <Route exact path="/" component={Home} />
+    </NativeRouter>
+  );
+}
+
 export default App;
 
