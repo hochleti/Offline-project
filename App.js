@@ -5,7 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import CountDown from 'react-native-countdown-component';
 import Firebase from "./js/firebase";
 import { NativeRouter, Route, Link } from "react-router-native";
-import { LearnMorePage } from './js';
+import { LearnMorePage } from './js/learn_more_page';
 
 
 const firebaseConfig = {

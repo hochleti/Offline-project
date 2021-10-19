@@ -1,8 +1,6 @@
 
 import * as React from 'react';
 import { View, Text, StyleSheet, Pressable, Image} from 'react-native';
-
-//TODO - add image
 import exampleImage from '../assets/learning.png';
 
 export function LearnMorePage() {
@@ -23,9 +21,6 @@ export function LearnMorePage() {
     function hotlineClick() {
         window.open("https://www.beyondblue.org.au/the-facts/suicide-prevention/get-support-now?gclid=EAIaIQobChMI4drkzuTT8wIVwyMrCh0aXArdEAAYASAAEgIa7PD_BwE");
     }
-
-    //TODO - image
-    //const exampleImageUri = Image.resolveAssetSource(exampleImage).uri
 
     const styles = StyleSheet.create({
         general: {
@@ -116,20 +111,13 @@ export function LearnMorePage() {
 
     <View style={styles.general}>
 
-        <Text style={styles.offlineTitle}>OFFLINE INC.</Text> 
-        <Text style={styles.placeholder}>Icon Placeholder yay :)</Text> 
+        <Text style={styles.offlineTitle}>OFFLINE INC.</Text>
 
-        
-        
-        
-        TODO - sort this out
         <Image
           style={styles.image}
           source={{uri: exampleImage}}
         />
         
-     
-
         <Text style={styles.headings}>
             What is Smartphone Addiction?
         </Text>
