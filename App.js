@@ -5,7 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import CountDown from 'react-native-countdown-component';
 import Firebase from "./js/firebase";
 import { NativeRouter, Route, Link } from "react-router-native";
-import { LearnMorePage } from './js/pages/learn-more';
+import { LearnMorePage } from './js';
 
 
 const firebaseConfig = {
@@ -104,7 +104,7 @@ function App() {
     <NativeRouter>
       <Route exact path="/" component={Home} />
       <Route path="/learn-more" component={LearnMorePage} />
-      <div>
+      <View>
         {/** replace with Nav */}
         <Link to="/">
           <Text>Home</Text>
@@ -112,7 +112,7 @@ function App() {
         <Link to="/learn-more">
           <Text>Learn More</Text>
         </Link>
-      </div>
+      </View>
     </NativeRouter>
   );
 }

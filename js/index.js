@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, Pressable, Image} from 'react-native';
 
 //TODO - add image
-//import exampleImage from '../assets/learning.png';
+import exampleImage from '../assets/learning.png';
 
 export function LearnMorePage() {
 
@@ -120,15 +120,15 @@ export function LearnMorePage() {
         <Text style={styles.placeholder}>Icon Placeholder yay :)</Text> 
 
         
-        {/*
+        
         
         TODO - sort this out
         <Image
           style={styles.image}
-          source={{uri: exampleImageUri}}
+          source={{uri: exampleImage}}
         />
         
-        */}
+     
 
         <Text style={styles.headings}>
             What is Smartphone Addiction?
