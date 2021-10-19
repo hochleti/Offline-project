@@ -14,6 +14,13 @@ function Home() {
 }
 
 function App() {
+  const styles = StyleSheet.create({
+    text:{
+      color: 'white',
+      fontFamily: "Charter",
+      fontSize: 16
+    },
+  });
   return (
     <NativeRouter>
       <Route exact path="/" component={Home} />
@@ -21,21 +28,21 @@ function App() {
       <Route path="/timer" component={Timer} />
       <Route path="/leaderboard" component={LeaderBoard} />
       <View style={{
-        borderWidth: 2, padding: 15, flexDirection: "row",
-        justifyContent: "space-around", borderTopColor: "lightblue"
+         padding: 20, flexDirection: "row",
+        justifyContent: "space-around", backgroundColor: '#0290B2'
       }}>
         {/** replace with Nav */}
         <Link to="/">
-          <Text>Home</Text>
+          <Text style={styles.text}>Home</Text>
         </Link>
         <Link to="/learn-more">
-          <Text>Learn More</Text>
+          <Text style={styles.text}>Learn More</Text>
         </Link>
         <Link to="/timer">
-          <Text>Timer</Text>
+          <Text style={styles.text}>Mission</Text>
         </Link>
         <Link to="/leaderboard">
-          <Text>Leaderboard</Text>
+          <Text style={styles.text}>Leaderboard</Text>
         </Link>
       </View>
     </NativeRouter>
