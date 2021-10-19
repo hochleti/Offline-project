@@ -63,7 +63,7 @@ export default function App() {
                 tabBarActiveTintColor: '#0290B2',
                 tabBarInactiveTintColor:"gray",     
             })}>
-        <Tab.Navigator/>
+        </Tab.Navigator>
       <MyTabs />
     </NavigationContainer>
   );
