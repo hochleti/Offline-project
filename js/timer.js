@@ -6,13 +6,25 @@ import CountDown from 'react-native-countdown-component';
 import Firebase from "./firebase";
 
 
-export function Timer() {
 
+export function Timer() {
     function writeUserData(username, timeSpent) {
         if (username != "") {
-            Firebase.database().ref('users/' + username).set({
-                time: timeSpent
-            });
+            Firebase.database().ref('users').child(username).once('value', function(snapshot) {
+    
+                if (snapshot.exists()) {
+                  const newTime = snapshot.val().time + timeSpent;
+                  Firebase.database().ref('users/' + username).set({
+                    time: newTime
+                });
+                  alert('yes');
+                } else {
+                    Firebase.database().ref('users/' + username).set({
+                        time: timeSpent
+                    });
+                }
+              });
+            
             alert('Finished')
         }
     }
