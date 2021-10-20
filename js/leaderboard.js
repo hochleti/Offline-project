@@ -23,7 +23,8 @@ export function LeaderBoard() {
             fontSize: 20,
             color: "white",
             textAlign: "center",
-            paddingRight: 100,
+            paddingRight: 60,
+            paddingLeft: 30,
             paddingBottom: 15,
         },
         title: {
@@ -46,7 +47,7 @@ export function LeaderBoard() {
         <View style={{ flex: 1, paddingTop: 100, backgroundColor: '#89C7D6' }}>
             <Text style={styles.title}>Leaderboard</Text>
             <View flexDirection="col">
-                <Text style={styles.subtitle}>Winning Team   Time Completed (Minutes)</Text>
+                <Text style={styles.subtitle}>Winning Team   Points</Text>
                 {items.map(item => (
                     <View flexDirection="row" style={{ marginLeft: "auto",  marginRight: "auto" }}>
                         <Text style={styles.text}>{item.name}</Text>
