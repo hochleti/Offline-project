@@ -49,19 +49,28 @@ export function Timer() {
             marginBottom: 10,
             width: 200,
         },
-        title:{
-            textAlign:"center",
+        title: {
+            textAlign: "center",
             fontSize: 25,
             color: "white",
             fontFamily: "Charter",
-            paddingBottom: 50,
+            paddingBottom: 30,
         },
+        paragraph:{
+            textAlign:"center",
+            padding: 10,
+            color: 'white',
+            fontFamily: "Charter",
+            fontSize: 16
+          },
     });
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Start Your Mission</Text>
-            <View style={{ flexDirection: "row", paddingBottom: 50 }}>
-                <Text style={{ paddingTop: 10, fontSize: 16, marginLeft: "auto", color: "white" }}>Your Name</Text>
+            
+            <View style={{paddingBottom: 50 }}>
+                <Text style={styles.paragraph}>Before you start, what's your name?</Text>
+                {/* <Text style={{ paddingTop: 10, fontSize: 16, marginLeft: "auto", color: "white" }}>Your Name</Text> */}
                 <TextInput
                     style={styles.textInput}
                     placeholder="Enter your name"
