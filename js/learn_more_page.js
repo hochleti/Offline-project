@@ -119,7 +119,7 @@ export function LearnMorePage() {
 
         <Image
           style={styles.image}
-          source={{uri: exampleImage}}
+          source={exampleImage}
         />
         
         <Text style={styles.headings}>
