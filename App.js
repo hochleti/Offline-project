@@ -6,9 +6,26 @@ import { Timer } from './js/timer';
 import { LeaderBoard } from './js/leaderboard';
 
 function Home() {
+  const styles = StyleSheet.create({
+    title:{
+      color: 'white',
+      fontFamily: "Charter",
+      fontSize: 25,
+      paddingBottom: 15
+    },
+    paragraph:{
+      textAlign: "center",
+      padding: 15,
+      color: 'white',
+      fontFamily: "Charter",
+      fontSize: 16
+    },
+  });
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Homepage</Text>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#89C7D6'}}>
+      <Text style={styles.title}>Welcome to Offline</Text>
+      <Text style={styles.paragraph}>Join us and form teams with your friends to go offline together</Text>
+      <Text style={styles.paragraph}>Compete with other teams to rank top on the leaderbaord</Text>
     </View>
   );
 }
