@@ -6,10 +6,9 @@ import Firebase from "./firebase";
 export function LeaderBoard() {
     const [items, setItems] = useState([]);
 
-    Firebase.database().ref('users').orderByChild("time").limitToLast(5).once('value').then(function (snapshot) {
+    Firebase.database().ref('users').limitToLast(2).orderByChild("time").once('value').then(function (snapshot) {
         snapshot.forEach(function (child) {
-            if (items.length < 6) {
-
+            if (items.length != 1) {
                 setItems([...items, {
                     name: child.key,
                     time: child.val().time
@@ -47,7 +46,7 @@ export function LeaderBoard() {
         <View style={{ flex: 1, paddingTop: 100, backgroundColor: '#89C7D6' }}>
             <Text style={styles.title}>Leaderboard</Text>
             <View flexDirection="col">
-                <Text style={styles.subtitle}>Team   Time Completed (Minutes)</Text>
+                <Text style={styles.subtitle}>Winning Team   Time Completed (Minutes)</Text>
                 {items.map(item => (
                     <View flexDirection="row" style={{ marginLeft: "auto",  marginRight: "auto" }}>
                         <Text style={styles.text}>{item.name}</Text>
